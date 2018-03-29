@@ -243,6 +243,10 @@ class FunctionCallChecker extends \Psalm\Checker\Statements\Expression\CallCheck
                         $stmt->args
                     );
                 }
+
+                if ($codebase->server_mode) {
+                    $codebase->addNodeReference($statements_checker->getFilePath(), $stmt->name, $function_id . '()');
+                }
             }
         }
 
